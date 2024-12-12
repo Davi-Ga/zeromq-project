@@ -11,9 +11,11 @@ print("CLIENTE")
 for request in range(10):
     print("Sending request %s …" % request)
     
-    numero = random.randint(1, 50)
+    # numero = random.randint(1, 1000)
     
-    socket.send(numero.to_bytes(20, byteorder='big'))
+    numero = 1000
+    
+    socket.send(numero.to_bytes(100, byteorder='big'))
 
     message = socket.recv()
     

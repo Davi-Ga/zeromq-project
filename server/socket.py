@@ -21,4 +21,4 @@ while True:
     time.sleep(1)
     resposta = fibonacci(int.from_bytes(message, byteorder='big'))
     
-    socket.send(resposta.to_bytes(20, byteorder='big'))
+    socket.send(resposta.to_bytes(100, byteorder='big'))
