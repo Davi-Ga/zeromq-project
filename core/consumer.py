@@ -6,14 +6,17 @@ context = zmq.Context()
 print("Connecting to hello world server…")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
-print("CLIENTEEEEEE")
+print("CLIENTE")
 
 for request in range(10):
     print("Sending request %s …" % request)
-    # socket.send(b"Hello")
-    numero = random.randint(1, 15)
+    
+    numero = random.randint(1, 40)
     print(numero)
-    socket.send(int.to_bytes(numero, byteorder='big'))
+    socket.send(numero.to_bytes(20, byteorder='big'))
 
     message = socket.recv()
-    print("Received reply %s [ %s ]" % (request, message))
+
+    print(type(message))
+    
+    print("Received reply %s [ %s ]" % (request, str(message)))

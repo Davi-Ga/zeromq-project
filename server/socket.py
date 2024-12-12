@@ -4,7 +4,7 @@ import zmq
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
-print("SERVERRRRR")
+print("SERVER")
 
 def fibonacci(n, memo={}):
     if n in memo:
@@ -23,5 +23,5 @@ while True:
     print(resposta) 
 
     print(type(resposta))
-    # socket.send(b"resposta")
-    socket.send(int.to_bytes(resposta, byteorder='big'))
+    
+    socket.send(resposta.to_bytes(20, byteorder='big'))
