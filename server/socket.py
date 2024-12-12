@@ -16,12 +16,9 @@ def fibonacci(n, memo={}):
 
 while True:
     message = socket.recv()
-    print("Received request: %s" % message)
+    print("Received request: %s" % str(int.from_bytes(message, byteorder='big')))
 
     time.sleep(1)
     resposta = fibonacci(int.from_bytes(message, byteorder='big'))
-    print(resposta) 
-
-    print(type(resposta))
     
     socket.send(resposta.to_bytes(20, byteorder='big'))

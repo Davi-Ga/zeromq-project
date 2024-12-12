@@ -11,12 +11,10 @@ print("CLIENTE")
 for request in range(10):
     print("Sending request %s …" % request)
     
-    numero = random.randint(1, 40)
-    print(numero)
+    numero = random.randint(1, 50)
+    
     socket.send(numero.to_bytes(20, byteorder='big'))
 
     message = socket.recv()
-
-    print(type(message))
     
-    print("Received reply %s [ %s ]" % (request, str(message)))
+    print("Para: " + str(numero) + " Fibonacci: " + str(int.from_bytes(message, byteorder='big')))
